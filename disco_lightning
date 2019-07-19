@@ -1,0 +1,111 @@
+meta_set fHx8fHw=
+component_create maths;converters;4float_to_float4 4float_to_4 0.397484 -0.307221
+component_create maths;converters;4float_to_float4 4float_to_5 0.359140 -0.114013
+component_create maths;arithmetics;binary;add add_1 -0.239544 -0.085444
+component_create maths;arithmetics;binary;add add_10 -0.381657 -0.076981
+component_create maths;arithmetics;binary;add add_11 -0.348492 -0.100490
+component_create maths;arithmetics;binary;add add_12 -0.378097 -0.147293
+component_create maths;arithmetics;binary;add add_13 -0.379748 -0.177002
+component_create maths;arithmetics;binary;add add_14 -0.377204 -0.210473
+component_create maths;arithmetics;binary;add add_15 -0.347224 -0.153097
+component_create maths;arithmetics;binary;add add_16 -0.317971 -0.185764
+component_create maths;arithmetics;binary;add add_2 -0.152175 -0.187041
+component_create maths;arithmetics;binary;add add_4 -0.388949 0.108218
+component_create maths;arithmetics;binary;add add_5 -0.377754 0.073026
+component_create maths;arithmetics;binary;add add_6 -0.343246 0.119696
+component_create maths;arithmetics;binary;add add_7 -0.422825 -0.073195
+component_create maths;arithmetics;binary;add add_8 -0.425076 -0.096623
+component_create maths;arithmetics;binary;add add_9 -0.422215 -0.129728
+component_create maths;arithmetics;binary;div div_1 0.091168 -0.011429
+component_create maths;arithmetics;binary;div div_2 0.059237 -0.097708
+component_create maths;arithmetics;binary;div div_3 0.079039 -0.049230
+component_create maths;arithmetics;binary;div div_5 -0.099392 -0.201443
+param_set div_5 param2 7.99999952316284179688
+component_create maths;interpolation;float_smoother float_smoother_1 0.284638 -0.082794
+param_set float_smoother_1 speed 9.99999904632568359375
+component_create maths;interpolation;float_smoother float_smoother_2 0.288705 -0.113628
+param_set float_smoother_2 speed 9.99999904632568359375
+component_create maths;interpolation;float_smoother float_smoother_3 0.291538 -0.154001
+param_set float_smoother_3 speed 9.99999904632568359375
+component_create sound;input_visualization_listener input_visualization_listener_1 -0.555042 -0.162285
+component_create maths;arithmetics;binary;mult mult_1 -0.288348 -0.006454
+param_set mult_1 param2 4.99999952316284179688
+component_create maths;arithmetics;binary;mult mult_2 -0.231159 -0.160409
+param_set mult_2 param2 9.99999904632568359375
+component_create maths;arithmetics;binary;mult mult_3 -0.274427 0.090100
+param_set mult_3 param2 1.49999988079071044922
+component_create maths;arithmetics;binary;mult mult_6 0.119762 -0.027272
+component_create maths;arithmetics;binary;mult mult_7 0.106041 -0.062396
+component_create maths;arithmetics;binary;mult mult_8 0.103675 -0.101589
+component_create maths;arithmetics;binary;pow pow_2 -0.299452 0.114822
+param_set pow_2 param2 1.19999992847442626953
+component_create maths;arithmetics;binary;pow pow_3 -0.305033 -0.049450
+param_set pow_3 param2 0.89999991655349731445
+component_create maths;arithmetics;binary;pow pow_4 -0.267803 -0.156358
+param_set pow_4 param2 0.80000007152557373047
+cpp screen0 0.415184 -0.006247
+component_create renderers;oscilloscopes;simple_oscilloscope simple_oscilloscope_2 -0.310148 -0.413744
+break
+break
+param_connect simple_oscilloscope_2 color 4float_to_4 result_float4
+param_connect simple_oscilloscope_2 data_in input_visualization_listener_1 wave
+param_connect screen0 clear_color 4float_to_5 result_float4
+param_connect screen0 screen simple_oscilloscope_2 render_out
+param_connect pow_4 param1 add_16 sum
+param_connect pow_3 param1 add_11 sum
+param_connect pow_2 param1 add_6 sum
+param_connect mult_8 param2 div_5 quotient
+param_connect mult_8 param1 div_2 quotient
+param_connect mult_7 param2 div_5 quotient
+param_connect mult_7 param1 div_3 quotient
+param_connect mult_6 param2 div_5 quotient
+param_connect mult_6 param1 div_1 quotient
+param_connect mult_3 param1 pow_2 power
+param_connect mult_2 param1 pow_4 power
+param_connect mult_1 param1 pow_3 power
+param_connect float_smoother_3 value_in mult_8 product
+param_connect float_smoother_2 value_in mult_7 product
+param_connect float_smoother_1 value_in mult_6 product
+param_connect div_5 param1 add_2 sum
+param_connect div_3 param2 add_2 sum
+param_connect div_3 param1 mult_1 product
+param_connect div_2 param2 add_2 sum
+param_connect div_2 param1 mult_2 product
+param_connect div_1 param2 add_2 sum
+param_connect div_1 param1 mult_3 product
+param_connect add_9 param2 input_visualization_listener_1 octaves_r_4
+param_connect add_9 param1 input_visualization_listener_1 octaves_r_3
+param_connect add_8 param2 input_visualization_listener_1 octaves_r_2
+param_connect add_8 param1 input_visualization_listener_1 octaves_l_4
+param_connect add_7 param2 input_visualization_listener_1 octaves_l_3
+param_connect add_7 param1 input_visualization_listener_1 octaves_l_2
+param_connect add_6 param2 add_5 sum
+param_connect add_6 param1 add_4 sum
+param_connect add_5 param2 input_visualization_listener_1 octaves_r_1
+param_connect add_5 param1 input_visualization_listener_1 octaves_r_0
+param_connect add_4 param2 input_visualization_listener_1 octaves_l_1
+param_connect add_4 param1 input_visualization_listener_1 octaves_l_0
+param_connect add_2 param2 add_1 sum
+param_connect add_2 param1 mult_2 product
+param_connect add_16 param2 add_14 sum
+param_connect add_16 param1 add_15 sum
+param_connect add_15 param2 add_13 sum
+param_connect add_15 param1 add_12 sum
+param_connect add_14 param2 input_visualization_listener_1 octaves_r_7
+param_connect add_14 param1 input_visualization_listener_1 octaves_r_6
+param_connect add_13 param2 input_visualization_listener_1 octaves_r_5
+param_connect add_13 param1 input_visualization_listener_1 octaves_l_7
+param_connect add_12 param2 input_visualization_listener_1 octaves_l_6
+param_connect add_12 param1 input_visualization_listener_1 octaves_l_5
+param_connect add_11 param2 add_9 sum
+param_connect add_11 param1 add_10 sum
+param_connect add_10 param2 add_8 sum
+param_connect add_10 param1 add_7 sum
+param_connect add_1 param2 mult_3 product
+param_connect add_1 param1 mult_1 product
+param_connect 4float_to_5 floatc float_smoother_3 result_float
+param_connect 4float_to_5 floatb float_smoother_2 result_float
+param_connect 4float_to_5 floata float_smoother_1 result_float
+param_connect 4float_to_4 floatc mult_8 product
+param_connect 4float_to_4 floatb mult_7 product
+param_connect 4float_to_4 floata mult_6 product
