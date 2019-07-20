@@ -1,0 +1,35 @@
+meta_set fHx8fHw=
+component_create maths;converters;3float_to_float3 3float_to_3 -0.374763 0.050818
+component_create maths;arithmetics;binary;div div_4 -0.442563 0.120621
+param_set div_4 param2 49999.99609375000000000000
+component_create maths;accumulators;float_accumulator float_accumulator_1 -0.609914 0.273194
+param_set float_accumulator_1 float_in 0.99999994039535522461
+component_create sound;input_visualization_listener input_visualization_listener_1 -0.347700 0.144794
+component_create maths;arithmetics;binary;mod mod_1 -0.485624 0.229241
+param_set mod_1 param2 99999.99218750000000000000
+component_create maths;arithmetics;binary;mult mult_5 -0.543731 0.246536
+param_set mult_5 param2 20.00000000000000000000
+component_create texture;buffers;render_buffer render_buffer_1 -0.148572 0.227314
+cpp screen0 -0.102100 0.120700
+component_create renderers;oscilloscopes;simple_colorline simple_colorline_1 -0.275475 0.100599
+param_set simple_colorline_1 size 0.99999910593032836914,1.00000000000000000000,0.00000000000000000000
+param_set simple_colorline_1 angle 0.49999982118606567383
+param_set simple_colorline_1 line_width 1.00000000000000000000
+param_set simple_colorline_1 color_a 1.00000000000000000000,0.58587193489074707031,0.00000093517923005493,1.00000000000000000000
+param_set simple_colorline_1 color_b 0.00000000000000000000,0.00000099999988378840,0.51267468929290771484,0.99999892711639404297
+component_create maths;arithmetics;binary;sub sub_1 -0.435169 0.220671
+param_set sub_1 param2 49999.99609375000000000000
+component_create renderers;basic;textured_rectangle textured_rectangle_1 -0.245251 0.227664
+break
+break
+param_connect textured_rectangle_1 texture_in render_buffer_1 texture_out
+param_connect sub_1 param1 mod_1 sum
+param_connect simple_colorline_1 position 3float_to_3 result_float3
+param_connect simple_colorline_1 data_in input_visualization_listener_1 spectrum_hq
+param_connect screen0 screen textured_rectangle_1 render_out
+param_connect render_buffer_1 render_in simple_colorline_1 render_out
+param_connect render_buffer_1 render_in textured_rectangle_1 render_out
+param_connect mult_5 param1 float_accumulator_1 result_float
+param_connect mod_1 param1 mult_5 product
+param_connect div_4 param1 sub_1 sum
+param_connect 3float_to_3 floata div_4 quotient
